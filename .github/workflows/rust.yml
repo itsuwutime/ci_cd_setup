@@ -13,11 +13,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      working-directory: ./uwu
+      working-directory: .
 
     defaults:
       run:
         working-directory: ${{ env.working-directory }}
 
     steps:
-      - run: pwd # will respect working-directory
+      - run: ls
