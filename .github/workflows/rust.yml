@@ -35,14 +35,8 @@ jobs:
     name: clippy-check
     runs-on: ubuntu-latest
     
-    env:
-      working-directory: uwu
 
-    defaults:
-      run:
-        working-directory: ${{ env.working-directory }}
 
-    
     steps:
       - uses: actions/checkout@v3
       - name: Install clippy
@@ -50,4 +44,20 @@ jobs:
       - name: Run linter (clippy)
         # Will fail when encountering warnings
         run: cargo clippy -- -D warnings
+  
+  formatter:
+    name: rust-format
+    runs-on: ubuntu-latest
+    
+    env:
+      working-directory: uwu
+
+    defaults:
+      run:
+        working-directory: ${{ env.working-directory }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run formatter
+        run: cargo fmt --all -- --check
 
